@@ -24,7 +24,7 @@ public class TopickerFragment extends DialogFragment implements ListView.OnItemC
         ListView topicList = new ListView(getActivity());
         String[] topics = getResources().getStringArray(R.array.topics);
         ArrayAdapter listAdapter = new CustomListAdapter(getActivity(), getActivity().getApplicationContext(),
-                                                                                                    R.layout.menu_item, topics);
+                                                                                                    R.layout.menu_listview_item, topics);
         topicList.setAdapter(listAdapter);
         topicList.setOnItemClickListener(this);
         topicList.setPadding(10,30,10,30);

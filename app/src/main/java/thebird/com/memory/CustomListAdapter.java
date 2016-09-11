@@ -39,7 +39,7 @@ public class CustomListAdapter extends ArrayAdapter {
 
         TextView text = (TextView) mView.findViewById(R.id.itemText);
 
-        if(items[position] != null )
+        if(items[position] != null)
         {
             Typeface typeface = Typeface.createFromAsset(mActivity.getAssets(), "font/SweetMemories.ttf");
             text.setText(items[position]);

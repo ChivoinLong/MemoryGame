@@ -4,110 +4,158 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/GREY"
+    android:weightSum="5"
     tools:context="thebird.com.memory.Settings">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Settings"
-        android:id="@+id/settingTitle"
-        android:textColor="@color/title_color"
-        android:textAlignment="center"
-        android:textSize="@dimen/title_size"
-        android:paddingTop="10sp"
-        android:paddingBottom="10sp" />
-
-    <LinearLayout
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:background="@color/BLUE">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Music"
-            android:textColor="@android:color/black"
-            android:textSize="20dp"/>
+            android:text="Settings"
+            android:id="@+id/settingTitle"
+            android:textColor="@color/title_color"
+            android:textAlignment="center"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/title_size" />
+    </RelativeLayout>
 
-        <Switch
-            android:layout_marginLeft="20dp"
-            android:gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/BULE"
-            android:id="@+id/swMusic"
-            android:onClick="swMusic"
-            android:checked="false"/>
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_weight="1"
         android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/PINK"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sound"
-            android:textColor="@android:color/black"
-            android:textSize="20dp"/>
+            android:text="MUSIC"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textSize="30dp"/>
 
         <Switch
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="50dp"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/BULE"
-            android:id="@+id/swSound"
-            android:onClick="swSound"
-            android:checked="false"/>
+            android:scaleX="1.8"
+            android:scaleY="1.8"
+            android:buttonTint="@color/BLUE"
+            android:id="@+id/swMusic"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_weight="1"
         android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/PURPLE"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp">
 
         <TextView
-            android:gravity="right"
-            android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Theme"
-            android:textColor="@android:color/black"/>
+            android:text="SOUND"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textSize="30dp"/>
+
+        <Switch
+            android:layout_marginLeft="50dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="1.8"
+            android:scaleY="1.8"
+            android:buttonTint="@color/BLUE"
+            android:id="@+id/swSound"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:background="@color/ORANGE"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_centerInParent="true"
+            android:textSize="30dp"
+            android:text="THEME"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/GREY">
 
         <RadioGroup
-            android:id="@+id/themeGroup"
-            android:layout_marginTop="20dp"
+            android:id="@+id/themeRGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            android:scaleX="2"
+            android:scaleY="2">
+
             <RadioButton
-                android:id="@+id/red"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/RED"
-                android:text="RED" />
+                android:buttonTint="@color/pink"
+                android:textColor="@color/pink"
+                android:id="@+id/pink" />
+
             <RadioButton
-                android:id="@+id/green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/GREEN"
-                android:text="GREEN" />
+                android:buttonTint="@color/green"
+                android:textColor="@color/green"
+                android:id="@+id/green" />
+
             <RadioButton
-                android:id="@+id/blue"
-                android:checked="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/BULE"
-                android:text="BULE"/>
+                android:buttonTint="@color/blue"
+                android:textColor="@color/blue"
+                android:id="@+id/blue" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple"
+                android:textColor="@color/purple"
+                android:id="@+id/purple" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/red"
+                android:textColor="@color/red"
+                android:id="@+id/red" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/orange"
+                android:textColor="@color/orange"
+                android:id="@+id/orange" />
         </RadioGroup>
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
