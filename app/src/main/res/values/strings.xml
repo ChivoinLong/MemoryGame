@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Memory</string>
+    <string name="menu">Memory</string>
+    <string name="scores_title">SCORES</string>
+    <array name="menu_items">
+        <item>Play Game</item>
+        <item>View Scores</item>
+        <item>Settings</item>
+        <item>Help</item>
+    </array>
+    <array name="topics">
+        <item>Pictures and pictures</item>
+        <item>Words and picture</item>
+        <item>Letters and Words</item>
+    </array>
+</resources>
