@@ -2,6 +2,7 @@ package thebird.com.memory;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +13,14 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements ListView.OnItemClickListener{
 
+    public static final String PREFS_NAME = "Setting";
+    Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        intent = new Intent(this, BackgroundMusic.class);
         setContentView(R.layout.activity_main);
         TextView title = (TextView) findViewById(R.id.tvGameName);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "font/SweetMemories.ttf");
@@ -26,6 +32,25 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
 
         menuList.setOnItemClickListener(this);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        if (prefs.contains("music")) {
+            if (prefs.getBoolean("music", false)) {
+                startService(intent);
+            }
+        }//end if
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+//        stopService(intent);
+    }
+
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -54,4 +79,7 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
                 break;
         }
     }
+
+
+
 }
