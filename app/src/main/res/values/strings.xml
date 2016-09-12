@@ -1,17 +1,21 @@
 <resources>
-    <string name="app_name">Memory</string>
-    <string name="menu_title">Memory</string>
-    <string name="scores_title">Score</string>
-    <string name="settings_title">Setting</string>
+    <string name="play">Play</string>
+    <string name="score">Score</string>
+    <string name="setting">Setting</string>
+    <string name="help">Help</string>
     <array name="menu_items">
-        <item>Play Game</item>
-        <item>View Scores</item>
-        <item>Settings</item>
-        <item>Help</item>
+        <item>@string/play</item>
+        <item>@string/score</item>
+        <item>@string/setting</item>
+        <item>@string/help</item>
     </array>
     <array name="topics">
         <item>Pictures and pictures</item>
         <item>Words and picture</item>
         <item>Letters and Words</item>
     </array>
+    <string name="app_name">Memory</string>
+    <string name="menu_title">Memory</string>
+    <string name="scores_title">Score</string>
+    <string name="settings_title">Setting</string>
 </resources>

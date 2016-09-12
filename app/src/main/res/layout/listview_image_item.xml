@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="20dp">
 
-    <TableRow>
-        <ImageView
-            android:id="@+id/image1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:src="@drawable/cardback2"
-            android:scaleType="fitCenter"/>
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="10pt"
+        android:scaleType="fitCenter"
+        android:src="@drawable/cardback2" />
 
-        <TextView
-            android:id="@+id/itemText"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:textSize="10pt"
-            android:textColor="@color/PINK"
-            android:text="and" />
+    <TextView
+        android:id="@+id/itemText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="and"
+        android:textColor="@color/PINK"
+        android:textSize="15pt" />
 
-        <ImageView
-            android:id="@+id/image2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:src="@drawable/cardback2"
-            android:scaleType="fitCenter"/>
-    </TableRow>
-</TableLayout>
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10pt"
+        android:scaleType="fitCenter"
+        android:src="@drawable/cardback2" />
+</LinearLayout>

@@ -11,22 +11,24 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends Activity implements ListView.OnItemClickListener{
 
-    public static Typeface typeface;
     private static final String PREFS_NAME = "Setting";
+    public static Typeface typeface;
     SharedPreferences prefs;
     TextView title;
     ListView menuList;
     ArrayAdapter listAdapter;
-    String[] array;
+    List<ListItem> listItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        array = getResources().getStringArray(R.array.menu_items);
         menuList = (ListView) findViewById(R.id.list_menu);
         menuList.setOnItemClickListener(this);
 
@@ -39,8 +41,39 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
             SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
             editor.putBoolean("music",true);
             editor.putBoolean("sound",true);
-            editor.putString("theme", "pink");
+            editor.putInt("theme", R.color.PINK);
             editor.apply();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        /*     MUSIC    */
+        if (prefs.getBoolean("music", false)) {
+            startService(new Intent(this, BackgroundMusicService.class));
+        }
+
+        /*    THEME   */
+        if (prefs.contains("theme")) {
+            int color = getResources().getColor(prefs.getInt("theme", R.color.PINK));
+            listItems = new ArrayList<>();
+            listItems.add(new ListItem(getResources().getString(R.string.play), color));
+            listItems.add(new ListItem(getResources().getString(R.string.score), color));
+            listItems.add(new ListItem(getResources().getString(R.string.setting), color));
+            listItems.add(new ListItem(getResources().getString(R.string.help), color));
+            title.setTextColor(color);
+            listAdapter = new CustomListAdapter(this, R.layout.listview_item, listItems);
+            menuList.setAdapter(listAdapter);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (isFinishing()) {
+            stopService(new Intent(this, BackgroundMusicService.class));
         }
     }
 
@@ -71,52 +104,4 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
                 break;
         }
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        /*     MUSIC    */
-        if (prefs.getBoolean("music", false)){
-            startService(new Intent(this, BackgroundMusicService.class));
-        }
-
-        /*    THEME   */
-        if (prefs.contains("theme")){
-            String getTheme = prefs.getString("theme", "");
-            int color = getResources().getColor(R.color.grey);;
-            switch (getTheme){
-                case "red":
-                    color = getResources().getColor(R.color.RED);
-                    break;
-                case "green":
-                    color = getResources().getColor(R.color.GREEN);
-                    break;
-                case "blue":
-                    color = getResources().getColor(R.color.BLUE);
-                    break;
-                case "pink":
-                    color = getResources().getColor(R.color.PINK);
-                    break;
-                case "purple":
-                    color = getResources().getColor(R.color.PURPLE);
-                    break;
-                case "orange":
-                    color = getResources().getColor(R.color.ORANGE);
-                    break;
-            }//end switch
-            title.setTextColor(color);
-            listAdapter = new CustomListAdapter(this, R.layout.listview_item, color, array);
-            menuList.setAdapter(listAdapter);
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (isFinishing()) {
-            stopService(new Intent(this, BackgroundMusicService.class));
-        }
-    }
-
 }
