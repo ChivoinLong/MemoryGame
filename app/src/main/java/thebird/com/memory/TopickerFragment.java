@@ -15,22 +15,26 @@ import android.widget.Toast;
  */
 public class TopickerFragment extends DialogFragment implements ListView.OnItemClickListener{
 
+    int[] leftPic = {R.drawable.rooster, R.drawable.zebra, R.drawable.pig};
+    int[] rightPic = {R.drawable.snake, R.drawable.octopus, R.drawable.bird};
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
         builder.setTitle("Pick a topic:");
 
         ListView topicList = new ListView(getActivity());
-        String[] topics = getResources().getStringArray(R.array.topics);
-        ArrayAdapter listAdapter = new CustomListAdapter(getActivity(), getActivity().getApplicationContext(),
-                                                                                                    R.layout.menu_listview_item, topics);
+        ArrayAdapter listAdapter = new CustomListAdapter(getActivity(),
+                R.layout.listview_image_item, leftPic, rightPic);
         topicList.setAdapter(listAdapter);
         topicList.setOnItemClickListener(this);
         topicList.setPadding(10,30,10,30);
+//        topicList.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
+
         builder.setView(topicList);
         Dialog dialog = builder.create();
-        dialog.setCanceledOnTouchOutside(false);
+//        dialog.setCanceledOnTouchOutside(false);
 
         return dialog;
     }

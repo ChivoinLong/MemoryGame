@@ -1,12 +1,12 @@
 package thebird.com.memory;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -15,35 +15,49 @@ import android.widget.TextView;
 public class CustomListAdapter extends ArrayAdapter {
 
     private Activity mActivity;
-    private Context mContext;
-    private int id;
-    private String[] items ;
+    private int tvId;
+    private int mColor;
+    private int[] mPicRes1;
+    private int[] mPicRes2;
+    private String[] arrayStr;
 
-    public CustomListAdapter(Activity activity, Context context, int textViewResourceId , String[] list)
-    {
-        super(context, textViewResourceId, list);
+
+    public CustomListAdapter(Activity activity, int textViewResourceId, int[] picRes1, int[] picRes2) {
+        super(activity, textViewResourceId);
         mActivity = activity;
-        mContext = context;
-        id = textViewResourceId;
-        items = list;
+        tvId = textViewResourceId;
+        mPicRes1 = picRes1;
+        mPicRes2 = picRes2;
+    }
+
+    public CustomListAdapter(Activity activity, int textViewResourceId, int color, String[] list) {
+        super(activity, textViewResourceId, list);
+        mActivity = activity;
+        tvId = textViewResourceId;
+        mColor = color;
+        arrayStr = list;
     }
 
     @Override
     public View getView(int position, View v, ViewGroup parent)
     {
-        View mView = v ;
-        if(mView == null){
-            LayoutInflater vi = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            mView = vi.inflate(id, null);
+        LayoutInflater inflater = mActivity.getLayoutInflater();
+        View mView = inflater.inflate(tvId, null, true);
+        TextView text = (TextView) mView.findViewById(R.id.itemText);
+        Typeface typeface = Typeface.createFromAsset(mActivity.getAssets(), "font/SweetMemories.ttf");
+        text.setTypeface(typeface);
+        text.setTextColor(mColor);
+
+        if (arrayStr[position] != null) {
+            text.setText(arrayStr[position]);
         }
 
-        TextView text = (TextView) mView.findViewById(R.id.itemText);
-
-        if(items[position] != null)
-        {
-            Typeface typeface = Typeface.createFromAsset(mActivity.getAssets(), "font/SweetMemories.ttf");
-            text.setText(items[position]);
-            text.setTypeface(typeface);
+        if (mPicRes1 != null && mPicRes2 != null) {
+            ImageView img1 = (ImageView) mView.findViewById(R.id.image1);
+            ImageView img2 = (ImageView) mView.findViewById(R.id.image2);
+            img1.setImageResource(mPicRes1[position]);
+            img2.setImageResource(mPicRes2[position]);
+            text.setText("and");
         }
 
         return mView;

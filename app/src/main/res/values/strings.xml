@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Memory</string>
-    <string name="menu">Memory</string>
-    <string name="scores_title">SCORES</string>
+    <string name="menu_title">Memory</string>
+    <string name="scores_title">Score</string>
+    <string name="settings_title">Setting</string>
     <array name="menu_items">
         <item>Play Game</item>
         <item>View Scores</item>

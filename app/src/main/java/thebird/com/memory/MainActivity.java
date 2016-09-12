@@ -16,22 +16,23 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
     public static Typeface typeface;
     private static final String PREFS_NAME = "Setting";
     SharedPreferences prefs;
+    TextView title;
+    ListView menuList;
+    ArrayAdapter listAdapter;
+    String[] array;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView title = (TextView) findViewById(R.id.tvGameName);
+        array = getResources().getStringArray(R.array.menu_items);
+        menuList = (ListView) findViewById(R.id.list_menu);
+        menuList.setOnItemClickListener(this);
+
+        title = (TextView) findViewById(R.id.menuTitle);
         typeface = Typeface.createFromAsset(getAssets(), "font/SweetMemories.ttf");
         title.setTypeface(typeface);
-        ListView menuList = (ListView) findViewById(R.id.list_menu);
-
-        ArrayAdapter listAdapter = new CustomListAdapter(this, getApplicationContext(),
-                R.layout.menu_listview_item, getResources().getStringArray(R.array.menu_items));
-        menuList.setAdapter(listAdapter);
-
-        menuList.setOnItemClickListener(this);
 
         prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         if (!prefs.contains("music") || !prefs.contains("sound") || !prefs.contains("theme")){
@@ -75,8 +76,38 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
     protected void onResume() {
         super.onResume();
         prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        /*     MUSIC    */
         if (prefs.getBoolean("music", false)){
             startService(new Intent(this, BackgroundMusicService.class));
+        }
+
+        /*    THEME   */
+        if (prefs.contains("theme")){
+            String getTheme = prefs.getString("theme", "");
+            int color = getResources().getColor(R.color.grey);;
+            switch (getTheme){
+                case "red":
+                    color = getResources().getColor(R.color.RED);
+                    break;
+                case "green":
+                    color = getResources().getColor(R.color.GREEN);
+                    break;
+                case "blue":
+                    color = getResources().getColor(R.color.BLUE);
+                    break;
+                case "pink":
+                    color = getResources().getColor(R.color.PINK);
+                    break;
+                case "purple":
+                    color = getResources().getColor(R.color.PURPLE);
+                    break;
+                case "orange":
+                    color = getResources().getColor(R.color.ORANGE);
+                    break;
+            }//end switch
+            title.setTextColor(color);
+            listAdapter = new CustomListAdapter(this, R.layout.listview_item, color, array);
+            menuList.setAdapter(listAdapter);
         }
     }
 

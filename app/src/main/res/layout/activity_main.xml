@@ -12,10 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2"
-        android:textColor="@color/title_color"
-        android:text="@string/menu"
+        android:text="@string/menu_title"
         android:textSize="@dimen/title_size"
-        android:id="@+id/tvGameName"
+        android:id="@+id/menuTitle"
         android:gravity="center"/>
 
         <ListView

@@ -12,14 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/BLUE">
+        android:background="@android:color/black">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Settings"
+            android:text="@string/settings_title"
             android:id="@+id/settingTitle"
-            android:textColor="@color/title_color"
             android:textAlignment="center"
             android:layout_centerInParent="true"
             android:textSize="@dimen/title_size" />
@@ -30,7 +29,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal"
-        android:background="@color/PINK"
+        android:background="@color/pink"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
@@ -49,7 +48,6 @@
             android:layout_height="wrap_content"
             android:scaleX="1.8"
             android:scaleY="1.8"
-            android:buttonTint="@color/BLUE"
             android:id="@+id/swMusic"/>
 
     </LinearLayout>
@@ -58,7 +56,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal"
-        android:background="@color/PURPLE"
+        android:background="@color/purple"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
@@ -77,14 +75,13 @@
             android:layout_height="wrap_content"
             android:scaleX="1.8"
             android:scaleY="1.8"
-            android:buttonTint="@color/BLUE"
             android:id="@+id/swSound"/>
 
     </LinearLayout>
 
     <RelativeLayout
         android:layout_weight="1"
-        android:background="@color/ORANGE"
+        android:background="@color/green"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
@@ -103,7 +100,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/GREY">
+        android:background="@android:color/black">
 
         <RadioGroup
             android:id="@+id/themeRGroup"
@@ -117,43 +114,43 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/pink"
-                android:textColor="@color/pink"
+                android:buttonTint="@color/PINK"
+                android:textColor="@color/PINK"
                 android:id="@+id/pink" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/green"
-                android:textColor="@color/green"
+                android:buttonTint="@color/GREEN"
+                android:textColor="@color/GREEN"
                 android:id="@+id/green" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/blue"
-                android:textColor="@color/blue"
+                android:buttonTint="@color/BLUE"
+                android:textColor="@color/BLUE"
                 android:id="@+id/blue" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/purple"
-                android:textColor="@color/purple"
+                android:buttonTint="@color/PURPLE"
+                android:textColor="@color/PURPLE"
                 android:id="@+id/purple" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/red"
-                android:textColor="@color/red"
+                android:buttonTint="@color/RED"
+                android:textColor="@color/RED"
                 android:id="@+id/red" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/orange"
-                android:textColor="@color/orange"
+                android:buttonTint="@color/ORANGE"
+                android:textColor="@color/ORANGE"
                 android:id="@+id/orange" />
         </RadioGroup>
     </RelativeLayout>
