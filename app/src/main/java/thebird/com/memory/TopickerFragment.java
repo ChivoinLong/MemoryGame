@@ -27,9 +27,9 @@ public class TopickerFragment extends DialogFragment implements ListView.OnItemC
         int color = getResources().getColor(prefs.getInt("theme", R.color.PINK));
 
         listItems = new ArrayList<>();
-        listItems.add(new ListItem(R.drawable.frog, R.drawable.frog, color));
-        listItems.add(new ListItem(R.drawable.bear, R.drawable.bee, color));
-        listItems.add(new ListItem(R.drawable.bear, R.drawable.bee, color));
+        listItems.add(new ListItem(R.drawable.pic_frog, R.drawable.pic_frog, color));
+        listItems.add(new ListItem(R.drawable.pic_bear, R.drawable.pic_bee, color));
+        listItems.add(new ListItem(R.drawable.pic_bear, R.drawable.pic_bee, color));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //        builder.setTitle("Pick a topic:");
