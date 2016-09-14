@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by Chivoin Long on 08-Sep-16.
  */
-public class TopickerFragment extends DialogFragment implements ListView.OnItemClickListener{
+public class GameTypePickerFragment extends DialogFragment implements ListView.OnItemClickListener {
 
     List<ListItem> listItems;
 
