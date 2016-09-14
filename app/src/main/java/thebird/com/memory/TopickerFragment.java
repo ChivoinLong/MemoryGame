@@ -3,13 +3,13 @@ package thebird.com.memory;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,21 +27,19 @@ public class TopickerFragment extends DialogFragment implements ListView.OnItemC
         int color = getResources().getColor(prefs.getInt("theme", R.color.PINK));
 
         listItems = new ArrayList<>();
-        listItems.add(new ListItem(R.drawable.pic_frog, R.drawable.pic_frog, color));
-        listItems.add(new ListItem(R.drawable.pic_bear, R.drawable.pic_bee, color));
-        listItems.add(new ListItem(R.drawable.pic_bear, R.drawable.pic_bee, color));
+        listItems.add(new ListItem(R.drawable.list_pic, R.drawable.list_pic, color));
+        listItems.add(new ListItem(R.drawable.list_word, R.drawable.list_pic, color));
+        listItems.add(new ListItem(R.drawable.list_alphabet, R.drawable.list_pic_word, color));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//        builder.setTitle("Pick a topic:");
 
         ListView topicList = new ListView(getActivity());
         ArrayAdapter listAdapter = new CustomListAdapter(getActivity(),
                 R.layout.listview_image_item, listItems);
         topicList.setAdapter(listAdapter);
         topicList.setOnItemClickListener(this);
-        topicList.setDivider(getActivity().getResources().getDrawable(R.drawable.kid_divider));
-        topicList.setDividerHeight(150);
-//        topicList.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        topicList.setDivider(getActivity().getResources().getDrawable(R.drawable.colorful_divider));
+        topicList.setDividerHeight(80);
 
         builder.setView(topicList);
         Dialog dialog = builder.create();
@@ -52,6 +50,10 @@ public class TopickerFragment extends DialogFragment implements ListView.OnItemC
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getActivity(), String.valueOf(position), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), String.valueOf(position), Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(getActivity(), PlayGame.class);
+        i.putExtra("GameType", position);
+        startActivity(i);
+        dismiss();
     }
 }

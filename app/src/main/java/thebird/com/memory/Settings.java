@@ -63,7 +63,7 @@ public class Settings extends Activity implements Switch.OnClickListener, RadioG
         }//end if
 
         if (prefs.contains("theme")){
-            int color = getResources().getColor(prefs.getInt("theme", R.color.PINK));
+            int color = prefs.getInt("theme", R.color.PINK);
             switch (color) {
                 case R.color.RED:
                     themeRGroup.check(R.id.red);
@@ -84,6 +84,7 @@ public class Settings extends Activity implements Switch.OnClickListener, RadioG
                     themeRGroup.check(R.id.orange);
                     break;
             }//end switch
+            color = getResources().getColor(prefs.getInt("theme", R.color.PINK));
             title.setTextColor(color);
             swSound.getThumbDrawable().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
             swMusic.getThumbDrawable().setColorFilter(color, PorterDuff.Mode.MULTIPLY);

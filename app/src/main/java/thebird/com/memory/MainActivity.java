@@ -82,8 +82,8 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
         Intent i;
         switch (position){
             case 0:
-                i = new Intent(MainActivity.this, PlayGame.class);
-                startActivity(i);
+                TopickerFragment topickerFragment = new TopickerFragment();
+                topickerFragment.show(getFragmentManager(), "MyDialogFragment");
                 break;
             case 1:
                 i = new Intent(MainActivity.this, ViewScores.class);
@@ -96,8 +96,6 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
             case 3:
 //                        i = new Intent(MainActivity.this, Help.class);
 //                        startActivity(i);
-                TopickerFragment topickerFragment = new TopickerFragment();
-                topickerFragment.show(getFragmentManager(), "MyDialogFragment");
                 break;
             default:
 

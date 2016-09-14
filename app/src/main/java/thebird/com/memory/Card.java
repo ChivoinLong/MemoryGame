@@ -4,11 +4,13 @@ package thebird.com.memory;
  * Created by Chivoin Long on 31-May-16.
  */
 public class Card {
-    int _imgID;
-    int _state;
+    Integer _id;
+    Integer _imgID = null;
+    Integer _state = null;
 
-    public Card(int imgID, int state){
-        this._imgID = imgID;
-        this._state = state;
+    public Card(Integer id, Integer imgID, Integer state) {
+        _id = id;
+        _imgID = imgID;
+        _state = state;
     }
 }
