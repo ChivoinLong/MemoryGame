@@ -14,6 +14,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import thebird.com.memory.additional_classes.BackgroundMusicService;
+import thebird.com.memory.additional_classes.CustomListAdapter;
+import thebird.com.memory.additional_classes.ListItem;
+
 public class MainActivity extends Activity implements ListView.OnItemClickListener{
 
     private static final String PREFS_NAME = "Setting";

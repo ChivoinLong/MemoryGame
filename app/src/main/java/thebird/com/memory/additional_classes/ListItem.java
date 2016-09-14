@@ -1,4 +1,4 @@
-package thebird.com.memory;
+package thebird.com.memory.additional_classes;
 
 /**
  * Created by Chivoin Long on 12-Sep-16.

@@ -1,10 +1,12 @@
-package thebird.com.memory;
+package thebird.com.memory.additional_classes;
 
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+
+import thebird.com.memory.R;
 
 /**
  * Created by Chivoin Long on 11-Sep-16.

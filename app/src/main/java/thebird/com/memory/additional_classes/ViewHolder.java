@@ -1,4 +1,4 @@
-package thebird.com.memory;
+package thebird.com.memory.additional_classes;
 
 import android.widget.ImageView;
 import android.widget.TextView;

@@ -14,6 +14,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import thebird.com.memory.additional_classes.CustomListAdapter;
+import thebird.com.memory.additional_classes.ListItem;
+
 /**
  * Created by Chivoin Long on 08-Sep-16.
  */

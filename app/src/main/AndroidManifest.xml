@@ -29,7 +29,10 @@
         <activity
             android:name=".Settings"
             android:screenOrientation="portrait"></activity>
-        <service android:name=".BackgroundMusicService" android:enabled="true"></service>
+
+        <service
+            android:name=".additional_classes.BackgroundMusicService"
+            android:enabled="true"></service>
     </application>
 
 </manifest>

@@ -11,6 +11,8 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import thebird.com.memory.additional_classes.BackgroundMusicService;
+
 public class Settings extends Activity implements Switch.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     public static final String PREFS_NAME = "Setting";

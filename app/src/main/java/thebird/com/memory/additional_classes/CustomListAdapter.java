@@ -1,4 +1,4 @@
-package thebird.com.memory;
+package thebird.com.memory.additional_classes;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -8,8 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.List;
+
+import thebird.com.memory.R;
 
 /**
  * Created by Chivoin Long on 07-Sep-16.
@@ -43,7 +44,6 @@ public class CustomListAdapter extends ArrayAdapter<ListItem> {
             isImage = true;
         }
         viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.itemText);
-
 
         if (!isImage) {
             viewHolder.tvTitle.setText(listItem.getTexts());

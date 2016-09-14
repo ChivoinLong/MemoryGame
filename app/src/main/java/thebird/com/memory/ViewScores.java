@@ -1,60 +1,92 @@
 package thebird.com.memory;
 
-import android.app.Activity;
-import android.graphics.Typeface;
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.widget.TabHost;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 
-import java.util.Vector;
+import thebird.com.memory.additional_classes.TabsAdapter;
 
-public class ViewScores extends Activity {
+public class ViewScores extends FragmentActivity implements ActionBar.TabListener {
+
+    private ViewPager viewPager;
+    private TabsAdapter tabsAdapter;
+    private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.ScoreTheme);
         setContentView(R.layout.activity_view_scores);
-        TextView title = (TextView) findViewById(R.id.scoreTitle);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "font/el_barrio.ttf");
-        title.setTypeface(typeface);
 
-        TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
-        tabHost.setup();
 
-        TabHost.TabSpec tabSpec1 = tabHost.newTabSpec("four_four");
-        tabSpec1.setIndicator("4x4");
-        tabSpec1.setContent(R.id.scrollView44);
-        tabHost.addTab(tabSpec1);
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        actionBar = getActionBar();
+        tabsAdapter = new TabsAdapter(getSupportFragmentManager());
 
-        TabHost.TabSpec tabSpec2 = tabHost.newTabSpec("six_six");
-        tabSpec2.setIndicator("6x6");
-        tabSpec2.setContent(R.id.scrollView66);
-        tabHost.addTab(tabSpec2);
+        viewPager.setAdapter(tabsAdapter);
+        actionBar.hide();
+        actionBar.setTitle("High Scores");
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        tabHost.setCurrentTab(0);
-
-        TableLayout score44 = (TableLayout) findViewById(R.id.tabLayout44);
-    }
-
-    protected void updateScore(TableLayout tableLayout, Vector Score){
-        for (int i = 0; i < Score.size(); i++){
-            TableRow tableRow = new TableRow(this);
-
-            TextView tvName = new TextView(this);
-            tvName.setText(((Score)Score.elementAt(i)).playerName);
-            tableRow.addView(tvName);
-
-            TextView tvTries = new TextView(this);
-            tvTries.setText(((Score)Score.elementAt(i)).numTries);
-            tableRow.addView(tvTries);
-
-            tableLayout.addView(tableRow);
+        for (String tabName : TabsAdapter.getTabNames()) {
+            ActionBar.Tab tab = actionBar
+                    .newTab()
+                    .setText(tabName)
+                    .setTabListener(this);
+            actionBar.addTab(tab);
         }
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                actionBar.setSelectedNavigationItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
     }
 
-    protected void insertScore(Score score, Vector scoreList){
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        viewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+
+//    protected void updateScore(TableLayout tableLayout, Vector Score){
+//        for (int i = 0; i < Score.size(); i++){
+//            TableRow tableRow = new TableRow(this);
+//
+//            TextView tvName = new TextView(this);
+//            tvName.setText(((Score)Score.elementAt(i)).playerName);
+//            tableRow.addView(tvName);
+//
+//            TextView tvTries = new TextView(this);
+//            tvTries.setText(((Score)Score.elementAt(i)).numTries);
+//            tableRow.addView(tvTries);
+//
+//            tableLayout.addView(tableRow);
+//        }
+//    }
+
+//    protected void insertScore(Score score, Vector scoreList){
 //        for (int i = 0; i < scoreList.size(); i++) {
 //            int numTries = score.numTries;
 //            Score tmpScore = scoreList.elementAt(i);
@@ -64,5 +96,5 @@ public class ViewScores extends Activity {
 //                return;
 //            }
 //        }
-    }
+//    }
 }

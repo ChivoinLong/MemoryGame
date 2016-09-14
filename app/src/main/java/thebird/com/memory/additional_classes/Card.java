@@ -1,12 +1,12 @@
-package thebird.com.memory;
+package thebird.com.memory.additional_classes;
 
 /**
  * Created by Chivoin Long on 31-May-16.
  */
 public class Card {
-    Integer _id;
-    Integer _imgID = null;
-    Integer _state = null;
+    public Integer _id;
+    public Integer _imgID = null;
+    public Integer _state = null;
 
     public Card(Integer id, Integer imgID, Integer state) {
         _id = id;
