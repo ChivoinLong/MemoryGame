@@ -17,4 +17,5 @@
     <string name="app_name">Memory</string>
     <string name="scores_title">Score</string>
     <string name="settings_title">Setting</string>
+
 </resources>

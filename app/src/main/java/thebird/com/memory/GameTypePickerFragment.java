@@ -30,9 +30,9 @@ public class GameTypePickerFragment extends DialogFragment implements ListView.O
         int color = getResources().getColor(prefs.getInt("theme", R.color.PINK));
 
         listItems = new ArrayList<>();
-        listItems.add(new ListItem(R.drawable.list_pic, R.drawable.list_pic, color));
-        listItems.add(new ListItem(R.drawable.list_word, R.drawable.list_pic, color));
-        listItems.add(new ListItem(R.drawable.list_alphabet, R.drawable.list_pic_word, color));
+        listItems.add(new ListItem(R.drawable.pic_bee, R.drawable.pic_bee, color));
+        listItems.add(new ListItem(R.drawable.word_bee, R.drawable.pic_bee, color));
+        listItems.add(new ListItem(R.drawable.alphabet_b, R.drawable.pic_bee, color));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 

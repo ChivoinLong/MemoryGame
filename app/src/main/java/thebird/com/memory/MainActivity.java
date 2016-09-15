@@ -76,9 +76,7 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
     @Override
     protected void onPause() {
         super.onPause();
-        if (isFinishing()) {
-            stopService(new Intent(this, BackgroundMusicService.class));
-        }
+        stopService(new Intent(this, BackgroundMusicService.class));
     }
 
     @Override

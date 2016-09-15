@@ -13,7 +13,7 @@
         android:layout_gravity="center"
         android:layout_marginRight="10dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/list_pic" />
+        android:src="@drawable/word_bee" />
 
     <TextView
         android:id="@+id/itemText"
@@ -32,5 +32,5 @@
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/list_word" />
+        android:src="@drawable/pic_bee" />
 </LinearLayout>

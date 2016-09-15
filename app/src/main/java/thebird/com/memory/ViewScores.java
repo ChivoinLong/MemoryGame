@@ -2,10 +2,12 @@ package thebird.com.memory;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
+import thebird.com.memory.additional_classes.BackgroundMusicService;
 import thebird.com.memory.additional_classes.TabsAdapter;
 
 public class ViewScores extends FragmentActivity implements ActionBar.TabListener {
@@ -69,32 +71,15 @@ public class ViewScores extends FragmentActivity implements ActionBar.TabListene
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopService(new Intent(this, BackgroundMusicService.class));
+    }
 
-//    protected void updateScore(TableLayout tableLayout, Vector Score){
-//        for (int i = 0; i < Score.size(); i++){
-//            TableRow tableRow = new TableRow(this);
-//
-//            TextView tvName = new TextView(this);
-//            tvName.setText(((Score)Score.elementAt(i)).playerName);
-//            tableRow.addView(tvName);
-//
-//            TextView tvTries = new TextView(this);
-//            tvTries.setText(((Score)Score.elementAt(i)).numTries);
-//            tableRow.addView(tvTries);
-//
-//            tableLayout.addView(tableRow);
-//        }
-//    }
-
-//    protected void insertScore(Score score, Vector scoreList){
-//        for (int i = 0; i < scoreList.size(); i++) {
-//            int numTries = score.numTries;
-//            Score tmpScore = scoreList.elementAt(i);
-//
-//            if(numTries < tmpScore.numTries){
-//                scoreList.insertElementAt(i);
-//                return;
-//            }
-//        }
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startService(new Intent(this, BackgroundMusicService.class));
+    }
 }

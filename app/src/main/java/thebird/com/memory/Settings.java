@@ -56,6 +56,8 @@ public class Settings extends Activity implements Switch.OnClickListener, RadioG
         super.onResume();
         if (prefs.contains("music")) {
             boolean isMusicOn = prefs.getBoolean("music", false);
+            if (isMusicOn)
+                startService(new Intent(this, BackgroundMusicService.class));
             swMusic.setChecked(isMusicOn);
         }//end if
 
