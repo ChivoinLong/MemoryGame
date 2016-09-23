@@ -3,9 +3,11 @@ package thebird.com.memory;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import thebird.com.memory.additional_classes.BackgroundMusicService;
 import thebird.com.memory.additional_classes.TabsAdapter;
@@ -15,13 +17,17 @@ public class ViewScores extends FragmentActivity implements ActionBar.TabListene
     private ViewPager viewPager;
     private TabsAdapter tabsAdapter;
     private ActionBar actionBar;
+    SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ScoreTheme);
         setContentView(R.layout.activity_view_scores);
-
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
 
         viewPager = (ViewPager) findViewById(R.id.pager);
         actionBar = getActionBar();
@@ -80,6 +86,10 @@ public class ViewScores extends FragmentActivity implements ActionBar.TabListene
     @Override
     protected void onResume() {
         super.onResume();
-        startService(new Intent(this, BackgroundMusicService.class));
+        /*     MUSIC    */
+        prefs = getSharedPreferences(Settings.PREFS_NAME, MODE_PRIVATE);
+        if (prefs.getBoolean("music", false)) {
+            startService(new Intent(this, BackgroundMusicService.class));
+        }
     }
 }

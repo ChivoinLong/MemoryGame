@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/GREY"
-    android:weightSum="5"
+    android:weightSum="7"
     tools:context="thebird.com.memory.Settings">
 
     <RelativeLayout
@@ -56,7 +56,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal"
-        android:background="@color/purple"
+        android:background="@color/green"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
@@ -81,7 +81,7 @@
 
     <RelativeLayout
         android:layout_weight="1"
-        android:background="@color/green"
+        android:background="@color/blue"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
@@ -94,13 +94,14 @@
             android:text="THEME"
             android:textStyle="bold"
             android:textColor="@android:color/white"/>
+
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@android:color/black">
+        android:background="@color/teal">
 
         <RadioGroup
             android:id="@+id/themeRGroup"
@@ -108,8 +109,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_centerInParent="true"
-            android:scaleX="2"
-            android:scaleY="2">
+            android:scaleX="1.7"
+            android:scaleY="1.7"
+            android:layout_centerHorizontal="true">
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -154,5 +156,70 @@
                 android:id="@+id/orange" />
         </RadioGroup>
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@color/indigo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <RadioGroup
+            android:id="@+id/levelRGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            android:scaleX="1.5"
+            android:scaleY="1.5">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/green"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                android:text="EASY"
+                android:id="@+id/easyLevel" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/blue"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:text="MEDIUM"
+                android:id="@+id/mediumLevel" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/red"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:text="HARD"
+                android:id="@+id/hardLevel" />
+        </RadioGroup>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:background="@color/blue"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@android:color/transparent"
+            android:textSize="30dp"
+            android:text="RESET"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+
+    </RelativeLayout>
+
 
 </LinearLayout>

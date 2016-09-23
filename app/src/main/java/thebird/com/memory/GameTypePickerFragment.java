@@ -38,11 +38,11 @@ public class GameTypePickerFragment extends DialogFragment implements ListView.O
 
         ListView topicList = new ListView(getActivity());
         ArrayAdapter listAdapter = new CustomListAdapter(getActivity(),
-                R.layout.listview_image_item, listItems);
+                R.layout.listview_image_item, listItems, "");
         topicList.setAdapter(listAdapter);
         topicList.setOnItemClickListener(this);
         topicList.setDivider(getActivity().getResources().getDrawable(R.drawable.colorful_divider));
-        topicList.setDividerHeight(80);
+        topicList.setDividerHeight(40);
 
         builder.setView(topicList);
         Dialog dialog = builder.create();

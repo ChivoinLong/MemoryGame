@@ -14,6 +14,7 @@ import thebird.com.memory.R;
 public class BackgroundMusicService extends Service {
 
     MediaPlayer player;
+    public static int currentPosition = 0;
 
     @Nullable
     @Override
@@ -30,14 +31,15 @@ public class BackgroundMusicService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        player.seekTo(currentPosition);
         player.start();
         return 1;
     }
 
     @Override
     public void onDestroy() {
-        player.stop();
-        player.release();
+        currentPosition = player.getCurrentPosition();
+        player.pause();
     }
 
 }

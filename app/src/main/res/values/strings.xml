@@ -2,12 +2,12 @@
     <string name="play">Play</string>
     <string name="score">High score</string>
     <string name="setting">Setting</string>
-    <string name="help">Help</string>
+    <string name="about">About</string>
     <array name="menu_items">
         <item>@string/play</item>
         <item>@string/score</item>
         <item>@string/setting</item>
-        <item>@string/help</item>
+        <item>@string/about</item>
     </array>
     <array name="topics">
         <item>Pictures and pictures</item>

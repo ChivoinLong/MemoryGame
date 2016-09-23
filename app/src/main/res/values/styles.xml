@@ -5,6 +5,6 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="ScoreTheme" parent="android:Theme.Holo"></style>
+    <style name="ScoreTheme" parent="android:Theme.Material.Light"></style>
 
 </resources>

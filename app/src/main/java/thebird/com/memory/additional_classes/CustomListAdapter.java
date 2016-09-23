@@ -1,15 +1,17 @@
 package thebird.com.memory.additional_classes;
 
 import android.content.Context;
-import android.graphics.Typeface;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.List;
 
+import thebird.com.memory.MainActivity;
 import thebird.com.memory.R;
 
 /**
@@ -19,12 +21,14 @@ public class CustomListAdapter extends ArrayAdapter<ListItem> {
 
     Context context;
     int resource;
+    String mType;
     LayoutInflater layoutInflater;
 
-    public CustomListAdapter(Context context, int resource, List<ListItem> objects) {
+    public CustomListAdapter(Context context, int resource, List<ListItem> objects, String type) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
+        mType = type;
         this.layoutInflater = layoutInflater.from(context);
     }
 
@@ -43,19 +47,22 @@ public class CustomListAdapter extends ArrayAdapter<ListItem> {
             viewHolder.imgRight = (ImageView) convertView.findViewById(R.id.image2);
             isImage = true;
         }
-        viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.itemText);
+        viewHolder.tvItem = (TextView) convertView.findViewById(R.id.itemText);
+
+        viewHolder.tvItem.setTypeface(MainActivity.typeface);
+        viewHolder.tvItem.setTextColor(listItem.getTextColor());
 
         if (!isImage) {
-            viewHolder.tvTitle.setText(listItem.getTexts());
+            viewHolder.tvItem.setText(listItem.getTexts());
+            if (mType == "SCORE" && position == 0){
+                viewHolder.tvItem.setTextSize(100);
+                viewHolder.tvItem.setTextColor(Color.WHITE);
+            }
         }
         if (isImage) {
             viewHolder.imgLeft.setImageResource(listItem.getLeftImages());
             viewHolder.imgRight.setImageResource(listItem.getRightImages());
         }
-
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "font/SweetMemories.ttf");
-        viewHolder.tvTitle.setTypeface(typeface);
-        viewHolder.tvTitle.setTextColor(listItem.getTextColor());
         return convertView;
     }
 

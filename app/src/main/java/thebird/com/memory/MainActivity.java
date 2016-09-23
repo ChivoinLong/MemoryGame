@@ -1,6 +1,8 @@
 package thebird.com.memory;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -20,7 +22,6 @@ import thebird.com.memory.additional_classes.ListItem;
 
 public class MainActivity extends Activity implements ListView.OnItemClickListener{
 
-    private static final String PREFS_NAME = "Setting";
     public static Typeface typeface;
     SharedPreferences prefs;
     TextView title;
@@ -40,12 +41,13 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
         typeface = Typeface.createFromAsset(getAssets(), "font/SweetMemories.ttf");
         title.setTypeface(typeface);
 
-        prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        if (!prefs.contains("music") || !prefs.contains("sound") || !prefs.contains("theme")){
-            SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        prefs = getSharedPreferences(Settings.PREFS_NAME, MODE_PRIVATE);
+        if (!prefs.contains("music") || !prefs.contains("sound") || !prefs.contains("theme") || !prefs.contains("level")){
+            SharedPreferences.Editor editor = getSharedPreferences(Settings.PREFS_NAME, MODE_PRIVATE).edit();
             editor.putBoolean("music",true);
             editor.putBoolean("sound",true);
             editor.putInt("theme", R.color.PINK);
+            editor.putInt("level", 0);
             editor.apply();
         }
     }
@@ -53,7 +55,6 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
     @Override
     protected void onResume() {
         super.onResume();
-        prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         /*     MUSIC    */
         if (prefs.getBoolean("music", false)) {
             startService(new Intent(this, BackgroundMusicService.class));
@@ -66,9 +67,9 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
             listItems.add(new ListItem(getResources().getString(R.string.play), color));
             listItems.add(new ListItem(getResources().getString(R.string.score), color));
             listItems.add(new ListItem(getResources().getString(R.string.setting), color));
-            listItems.add(new ListItem(getResources().getString(R.string.help), color));
+            listItems.add(new ListItem(getResources().getString(R.string.about), color));
             title.setTextColor(color);
-            listAdapter = new CustomListAdapter(this, R.layout.listview_item, listItems);
+            listAdapter = new CustomListAdapter(this, R.layout.listview_item, listItems, "");
             menuList.setAdapter(listAdapter);
         }
     }
@@ -77,6 +78,22 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
     protected void onPause() {
         super.onPause();
         stopService(new Intent(this, BackgroundMusicService.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Exit")
+                .setMessage("Are you sure that you want to exit from this game?")
+                .setPositiveButton("Continue playing", null)
+                .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .show();
     }
 
     @Override
@@ -96,8 +113,8 @@ public class MainActivity extends Activity implements ListView.OnItemClickListen
                 startActivity(i);
                 break;
             case 3:
-//                        i = new Intent(MainActivity.this, Help.class);
-//                        startActivity(i);
+                        i = new Intent(MainActivity.this, About.class);
+                        startActivity(i);
                 break;
             default:
 

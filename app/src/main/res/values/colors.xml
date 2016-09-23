@@ -13,6 +13,12 @@
     <color name="BLUE">#448AFF</color>
     <color name="blue">#2196F3</color>
 
+    <color name="INDIGO">#536DFE</color>
+    <color name="indigo">#3F51B5</color>
+
+    <color name="TEAL">#64FFDA</color>
+    <color name="teal">#009688</color>
+
     <color name="PINK">#FF4081</color>
     <color name="pink">#E91E63</color>
 
@@ -24,5 +30,8 @@
 
     <color name="GREY">#E0E0E0</color>
     <color name="grey">#9E9E9E</color>
+
+    <color name="BLACK">#000</color>
+    <color name="WHITE">#FFF</color>
 
 </resources>

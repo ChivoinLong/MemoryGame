@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 public class TabsAdapter extends FragmentPagerAdapter {
 
-    public static String[] tabNames = {FragmentThreeByFour.fragmentName, FragmentFourByFive.fragmentName};
+    public static String[] tabNames = {FragmentLvlEasy.fragmentName, FragmentLvlMedium.fragmentName, FragmentLvlHard.fragmentName};
 
     public TabsAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
@@ -27,9 +27,11 @@ public class TabsAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new FragmentThreeByFour();
+                return new FragmentLvlEasy();
             case 1:
-                return new FragmentFourByFive();
+                return new FragmentLvlMedium();
+            case 2:
+                return new FragmentLvlHard();
         }
         return null;
     }
